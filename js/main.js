@@ -4,14 +4,22 @@ const tinArr = ['Hi', 'My', 'Name', 'Is', 'What', 'Slim', 'Eagle',];
 const medArr = ['incredulous', 'phantom', 'medium', 'difficulty'];
 const lonArr = ['superscope', 'incredible', 'ICantThinkOfVeryLongWords'];
 const phrArr = ['General Assembly', 'Ben is Cool', 'Hall & Oats', 'Tenacious D', 'You Stay Classy San Diego', 'Thats So Fetch'];
+const limbLookup = {
+    '0': "url('../../assets/base.jpg')",//base picture
+    '1': "url('../../assets/pcHead.jpg')",//head
+    '2': "url('../../assets/pcBody.jpg')",//body
+    '3': "url('../../assets/pcArm.jpg')",//arm
+    '4': "url('../../assets/pcArms.jpg')",//arms
+    '5': "url('../../assets/pcLeg.jpg')",//leg
+    '6': "url('../../assets/pcLegs.jpg')",//legs
+}
 
-const guessedWrong = [];
-//const guessedRight = [];
 
-
+//const lettersGuessed = [];
+//const lettersMatched = [];
 
 /*------ Variables ------*/
-let word, guess, letcnt;
+let word, guess, letCnt, matchCtn, lettersGuessed, lettersMatched, limbs;
 
 /*------Cached Elements------*/
 //const diffEl = document.getElementById("difficulty");
@@ -19,86 +27,129 @@ const tinDiff = document.getElementById("tin");
 const medDiff = document.getElementById("med");
 const lonDiff = document.getElementById("lon");
 const phrDiff = document.getElementById("phr");
-
+const msg     = document.getElementById("msg");
+const lets    = document.getElementById("letters");
+const letGss  = document.getElementById("letter-guess");
 
 
 /*------Event Listeners------*/
 tinDiff.addEventListener('click', function() {
-
     word = tinArr[Math.floor(Math.random() * tinArr.length)];
     letcnt = word.length;
+    render();
     
-    console.log(word, "<-- is the chosen word from tin");
-
 });
 
 
 medDiff.addEventListener('click', function() {
-
     word = medArr[Math.floor(Math.random() * medArr.length)];
     letcnt = word.length;
+    render();
     
-    console.log(word, "<-- is the chosen word from med");
 });
 
 
 lonDiff.addEventListener('click', function() {
-
     word = lonArr[Math.floor(Math.random() * lonArr.length)];
     letcnt = word.length;
+    render();
     
-    console.log(word, "<-- is the chosen word from lon");
 });
 
 
 
 phrDiff.addEventListener('click', function() {
-
     word = phrArr[Math.floor(Math.random() * phrArr.length)];
     letcnt = word.length;
+    render();
     
-    console.log(word, "<-- is the chosen word from phr");
 });
 
 
 
 /*------Functions------*/
+init();
+
+
+
+
 function submitGuess() {
-    guess = document.getElementById("letter-guess").value;
     
-    while(letcnt > 0) {
-        if(guess.length !== 1){
-            alert("Single letter guesses only!")
-        }else { 
-            for(let i=0; i < word.length; i++){
-                if(guess === word[i]) {
-                    charRender(i);
-                    letcnt--;
-                }else {
-                    guessedWrong.push(word[i]);
-                    if(guessedWrong.length === word.length){
-                        //I could manipulate the image from here if I wanted to. 
-                        stickRender();
+
+    guess = document.getElementById("letter-guess").value;
+    let lowWord = word.toLowerCase();
+    
+
+    if(accChars.includes(guess)){
+
+
+            //If the guess has been guessed before
+            if(lettersMatched && lettersMatched.indexOf(guess) > -1 || lettersGuessed && lettersGuessed.indexOf(guess) > -1){
+                
+                console.log(guess, 'guess passed the letter twins');
+
+                msg.innerText = `${guess} has been guessed before!`;
+
+            //If the guess is correct, add to matched and end game if word is finished
+            }else if(lowWord.indexOf(guess) > -1){
+                console.log(guess, 'guess is correct');
+                //render(); 
+
+                //searches for more than one of a character
+                for(let i=0; i < lowWord.length; i++){
+                    if(lowWord.charAt(i) === guess) {
+                        matchCtn += 1;
+                        console.log(matchCtn, "matchCtn in multiple search");
                     }
                 }
+                lettersMatched += guess;
+                if(matchCtn === lowWord.length) {
+                    console.log("matchCtn === word.length");
+                    playAgain('1');
+                }
+            //If the guess hasn't been guessed and is incorrect
+            }else {
+                lettersGuessed += guess;
+                console.log("guess was incorrect!");
+                //limbs++;
+                //stickRender(limbs);
+                
             }
+            
+    }else { msg.innerText = "Guesses must be 1 letter!"; }
+    render();
+}
 
 
-            //checkGuess(guess);
-        }
+
+
+/*function stickRender(limb) {
+    if(limb < 7) {
+      document.body.style.background = limbLookup[limb];
+    }else if(limb == 7){
+        playAgain('0');
     }
-    
+
+
+}*/
+
+
+function render(){
+    console.log(word, "word from render()");
+    document.getElementById("letter-guess").value = '';
+
+    //Tasks:
+    //  display character spaces
+    //  fill character spaces
+    //  clear the h2 contents (timer?)
+    //  clearBoard() -> might need to be a seperate function
 }
 
-
-function charRender(i) {
-    //Takes index of the current word ang highlights the corresponding
-    
+function init() {
+    lettersGuessed, lettersMatched = '';
+    matchCtn = 0;
+    limbs = 0;
 }
-
-
-
-
 
 
 
@@ -112,70 +163,6 @@ function checkGuess(guess) {
 function spinWheel(arr) {
     
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-//>Player chooses difficulty
-//    >difficulty starts scroll wheel effect for word randomizer and word is chosen
-function chTinDiff(){
-    //Difficulty is a tiny medium or long
-    //tinArr, medArr, lonArr
-    //call spinWheel('correct Array')
-    console.log('in chTinDiff');    
-
-}
-
-
-function chMedDiff(){
-    //Difficulty is a tiny medium or long
-    //tinArr, medArr, lonArr
-    //call spinWheel('correct Array')
-    console.log('in chMedDiff');
-}
-
-
-function chLonDiff(){
-    //Difficulty is a tiny medium or long
-    //tinArr, medArr, lonArr
-    //call spinWheel('correct Array')
-
-}
-
-function chPhrDiff(){
-    //Difficulty is a tiny medium or long
-    //tinArr, medArr, lonArr
-    //call spinWheel('correct Array')
-
-}
-*/
-
-
-
-
 
 
 
