@@ -1,11 +1,13 @@
-body {
+html {
     background: url(../assets/pcArms.jpg) center center fixed;
-    background-size: 100% auto;
+    background-size: contain;
     background-repeat: no-repeat;
-   
-    
+    background-color: grey;
 }
 
+body {
+   
+}
 
 #form {
     text-align: left;
@@ -16,5 +18,5 @@ body {
     text-align: left;
     display: inline-block;
     margin:0 auto;
-    margin-top: 20%;
+    margin-top: 40%;
 }
