@@ -1,5 +1,13 @@
-html {
-    background: url(../assets/base.jpg);
+body {
+    text-align: center;
+    /*justify-content: center;
+    justify-items: center;   */
+    background: url(../assets/pcArms.jpg);
     background-size: cover;
-    margin: 0 auto;
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    padding-top: 500px;
 }
