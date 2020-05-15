@@ -2,12 +2,9 @@ body {
     text-align: center;
     /*justify-content: center;
     justify-items: center;   */
-    background: url(../assets/pcArms.jpg);
+    background: url(../assets/pcArms.jpg) center center fixed;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    padding-top: 500px;
+    margin:0 auto;
 }
