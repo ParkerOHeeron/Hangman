@@ -36,7 +36,7 @@ const letGss  = document.getElementById("letter-guess");
 tinDiff.addEventListener('click', function() {
     word = tinArr[Math.floor(Math.random() * tinArr.length)];
     letcnt = word.length;
-    //render();
+    render();
     
 });
 
@@ -44,7 +44,7 @@ tinDiff.addEventListener('click', function() {
 medDiff.addEventListener('click', function() {
     word = medArr[Math.floor(Math.random() * medArr.length)];
     letcnt = word.length;
-    //render();
+    render();
     
 });
 
@@ -52,7 +52,7 @@ medDiff.addEventListener('click', function() {
 lonDiff.addEventListener('click', function() {
     word = lonArr[Math.floor(Math.random() * lonArr.length)];
     letcnt = word.length;
-    //render();
+    render();
     
 });
 
@@ -61,20 +61,14 @@ lonDiff.addEventListener('click', function() {
 phrDiff.addEventListener('click', function() {
     word = phrArr[Math.floor(Math.random() * phrArr.length)];
     letcnt = word.length;
-    //render();
+    render();
     
 });
 
 
 
 /*------Functions------*/
-function init() {
-    lettersGuessed, lettersMatched = '';
-    matchCtn = 0;
-    limbs = 0;
-    document.getElement
-}
-
+init();
 
 
 
@@ -83,40 +77,47 @@ function submitGuess() {
     
 
     guess = document.getElementById("letter-guess").value;
+    let lowWord = word.toLowerCase();
     
-
 
     if(accChars.includes(guess)){
 
 
-            //if the guess hasn't been guessed before
+            //If the guess has been guessed before
             if(lettersMatched && lettersMatched.indexOf(guess) > -1 || lettersGuessed && lettersGuessed.indexOf(guess) > -1){
                 
                 console.log(guess, 'guess passed the letter twins');
 
                 msg.innerText = `${guess} has been guessed before!`;
 
-            }else if(word.indexOf(guess) > -1){
-                //Reveal the character on its corresponding space
+            //If the guess is correct, add to matched and end game if word is finished
+            }else if(lowWord.indexOf(guess) > -1){
+                console.log(guess, 'guess is correct');
+                //render(); 
 
-                for(let i=0; i < word.length; i++){
-                    if(word.charAt(i) === guess) {
+                //searches for more than one of a character
+                for(let i=0; i < lowWord.length; i++){
+                    if(lowWord.charAt(i) === guess) {
                         matchCtn += 1;
+                        console.log(matchCtn, "matchCtn in multiple search");
                     }
                 }
-                lettersMatch += guess;
-                if(matchCtn === word.length) {
+                lettersMatched += guess;
+                if(matchCtn === lowWord.length) {
+                    console.log("matchCtn === word.length");
                     playAgain('1');
                 }
+            //If the guess hasn't been guessed and is incorrect
             }else {
                 lettersGuessed += guess;
+                console.log("guess was incorrect!");
                 //limbs++;
                 //stickRender(limbs);
                 
             }
             
     }else { msg.innerText = "Guesses must be 1 letter!"; }
-    //render();
+    render();
 }
 
 
@@ -134,6 +135,7 @@ function submitGuess() {
 
 
 function render(){
+    console.log(word, "word from render()");
     document.getElementById("letter-guess").value = '';
 
     //Tasks:
@@ -143,6 +145,11 @@ function render(){
     //  clearBoard() -> might need to be a seperate function
 }
 
+function init() {
+    lettersGuessed, lettersMatched = '';
+    matchCtn = 0;
+    limbs = 0;
+}
 
 
 
