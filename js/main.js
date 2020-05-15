@@ -4,13 +4,22 @@ const tinArr = ['Hi', 'My', 'Name', 'Is', 'What', 'Slim', 'Eagle',];
 const medArr = ['incredulous', 'phantom', 'medium', 'difficulty'];
 const lonArr = ['superscope', 'incredible', 'ICantThinkOfVeryLongWords'];
 const phrArr = ['General Assembly', 'Ben is Cool', 'Hall & Oats', 'Tenacious D', 'You Stay Classy San Diego', 'Thats So Fetch'];
+const limbLookup = {
+    '0': "url('../../assets/base.jpg')",//base picture
+    '1': "url('../../assets/pcHead.jpg')",//head
+    '2': "url('../../assets/pcBody.jpg')",//body
+    '3': "url('../../assets/pcArm.jpg')",//arm
+    '4': "url('../../assets/pcArms.jpg')",//arms
+    '5': "url('../../assets/pcLeg.jpg')",//leg
+    '6': "url('../../assets/pcLegs.jpg')",//legs
+}
 
 
 //const lettersGuessed = [];
 //const lettersMatched = [];
 
 /*------ Variables ------*/
-let word, guess, letCnt, matchCtn, lettersGuessed, lettersMatched;
+let word, guess, letCnt, matchCtn, lettersGuessed, lettersMatched, limbs;
 
 /*------Cached Elements------*/
 //const diffEl = document.getElementById("difficulty");
@@ -19,27 +28,32 @@ const medDiff = document.getElementById("med");
 const lonDiff = document.getElementById("lon");
 const phrDiff = document.getElementById("phr");
 const msg     = document.getElementById("msg");
+const lets    = document.getElementById("letters");
+const letGss  = document.getElementById("letter-guess");
 
 
 /*------Event Listeners------*/
 tinDiff.addEventListener('click', function() {
     word = tinArr[Math.floor(Math.random() * tinArr.length)];
     letcnt = word.length;
-    displayLetterList();
+    //render();
+    
 });
 
 
 medDiff.addEventListener('click', function() {
     word = medArr[Math.floor(Math.random() * medArr.length)];
     letcnt = word.length;
-    displayLetterList();
+    //render();
+    
 });
 
 
 lonDiff.addEventListener('click', function() {
     word = lonArr[Math.floor(Math.random() * lonArr.length)];
     letcnt = word.length;
-    displayLetterList();
+    //render();
+    
 });
 
 
@@ -47,7 +61,8 @@ lonDiff.addEventListener('click', function() {
 phrDiff.addEventListener('click', function() {
     word = phrArr[Math.floor(Math.random() * phrArr.length)];
     letcnt = word.length;
-    displayLetterList();
+    //render();
+    
 });
 
 
@@ -56,6 +71,8 @@ phrDiff.addEventListener('click', function() {
 function init() {
     lettersGuessed, lettersMatched = '';
     matchCtn = 0;
+    limbs = 0;
+    document.getElement
 }
 
 
@@ -66,7 +83,7 @@ function submitGuess() {
     
 
     guess = document.getElementById("letter-guess").value;
-    let lowCase = word.toLowerCase();
+    
 
 
     if(accChars.includes(guess)){
@@ -75,49 +92,50 @@ function submitGuess() {
             //if the guess hasn't been guessed before
             if(lettersMatched && lettersMatched.indexOf(guess) > -1 || lettersGuessed && lettersGuessed.indexOf(guess) > -1){
                 
-                for(let i=0; i < lowCase.length; i++){
-                    if(lowCase[i] == guess){
-                                               
-                        //call the charspace updater
-                    }
-                }
+                console.log(guess, 'guess passed the letter twins');
+
+                msg.innerText = `${guess} has been guessed before!`;
+
             }else if(word.indexOf(guess) > -1){
                 //Reveal the character on its corresponding space
 
                 for(let i=0; i < word.length; i++){
                     if(word.charAt(i) === guess) {
-                        matchCtn 
+                        matchCtn += 1;
                     }
                 }
-
-
-
-
+                lettersMatch += guess;
+                if(matchCtn === word.length) {
+                    playAgain('1');
+                }
             }else {
-                //guessedWrong.push(guess);
+                lettersGuessed += guess;
+                //limbs++;
+                //stickRender(limbs);
+                
             }
             
-    }else { msg.innerText = "Guesses can only be 1 letter!"; }
-    
-}
-
-function displayLetterList() {
-    //Take currentWord, count the characters, generate HTML 
-    console.log(word, "word from displayLetterList");
-    
+    }else { msg.innerText = "Guesses must be 1 letter!"; }
+    //render();
 }
 
 
-function charRender(i) {
-    //Takes index of the current word ang highlights the corresponding
 
 
+/*function stickRender(limb) {
+    if(limb < 7) {
+      document.body.style.background = limbLookup[limb];
+    }else if(limb == 7){
+        playAgain('0');
+    }
 
 
-}
+}*/
 
 
 function render(){
+    document.getElementById("letter-guess").value = '';
+
     //Tasks:
     //  display character spaces
     //  fill character spaces
@@ -138,57 +156,6 @@ function checkGuess(guess) {
 function spinWheel(arr) {
     
 }
-
-
-
-
-
-
-
-/*for(let i=0; i < lowCase.length; i++){
-                //console.log(lowCase[i], "word[i] in for");
-                if(lowCase[i] == guess) {
-                    console.log(guess, "guessed right");
-                    guessedRight.push(word[i]);                        
-                    letcnt--;
-                    lettersGuessed.push(guess);
-
-                    if(guessedRight.length == word.length){
-                        console.log(guessedRight, "winner!");
-                        //winner()
-                    }
-                }else if(lowCase[i] !== guess && lettersGuessed.indexOf(guess) > -1){
-                    console.log(guess, "guessed wrong");
-                    console.log(lettersGuessed, "lettersGuessed");
-                        
-                }
-            }*/
-            //checkGuess(guess)
-       // }
-        //document.getElementById("letter-guess").value = ''; 
-        msg.innerText = "";   
-        // render function to refresh the screen
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
