@@ -15,9 +15,6 @@ const limbLookup = {
 }
 
 
-//const lettersGuessed = [];
-//const lettersMatched = [];
-
 /*------ Variables ------*/
 let word, guess, letCnt, matchCtn, lettersGuessed, lettersMatched, limbs;
 
@@ -110,7 +107,7 @@ function submitGuess() {
         }
             
     }else { msg.innerText = "Guesses must be 1 letter!"; }
-    //render();
+    
 }
 
 
@@ -149,12 +146,6 @@ function playAgain(outcome){
 function render(){
     console.log(word, "word from render()");
     document.getElementById("letter-guess").value = '';
-
-    //Tasks:
-    //  display character spaces
-    //  fill character spaces
-    //  clear the h2 contents (timer?)
-    //  clearBoard() -> might need to be a seperate function
 }
 
 function init() {
@@ -165,18 +156,9 @@ function init() {
     matchCtn = 0;
     limbs = 0;
     console.log(word, ": is the word");
-    //document.body.style.background = "";
+    
 }
 
-
-//>Player has the option (continous throughout current word) to either
-//    a. (Re)Choose difficulty, this will find a new word(also scroll wheel effect)
-//    b. Cheat, gives next empty spac according to index if(!0,!1,!2....) 
-//    c. Guess
-//        >Player inputs a letter and matches against the words char-array
-//            >If wrong, background picture is updated to show next picture in line
-//            >If right, the corresponding space(s) are filled
-//    d. while(all_spaces != filled)^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     
 
 
