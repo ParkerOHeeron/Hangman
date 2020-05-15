@@ -1,6 +1,5 @@
-body {
-    text-align: center;
-    justify-content: center;
-    justify-items: center;   
-    background: url(../assets/pcArms.jpg);
+html {
+    background: url(../assets/base.jpg);
+    background-size: cover;
+    margin: 0 auto;
 }
