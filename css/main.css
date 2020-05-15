@@ -1,5 +1,5 @@
-html {
-    background: url(../assets/pcArms.jpg) center center fixed;
+body {
+    background: url(../assets/base.jpg) center center fixed;
     background-size: contain;
     background-repeat: no-repeat;
     background-color: grey;
@@ -8,7 +8,7 @@ html {
 
 #form {
     text-align: left;
-    top: 50%;
+    margin-top: 20%;
 }
 
 #difficulty {
