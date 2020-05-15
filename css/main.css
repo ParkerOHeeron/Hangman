@@ -1,10 +1,20 @@
 body {
-    text-align: center;
-    /*justify-content: center;
-    justify-items: center;   */
     background: url(../assets/pcArms.jpg) center center fixed;
-    background-size: cover;
+    background-size: 100% auto;
     background-repeat: no-repeat;
-    background-position: center center;
+   
+    
+}
+
+
+#form {
+    text-align: left;
+    top: 50%;
+}
+
+#difficulty {
+    text-align: left;
+    display: inline-block;
     margin:0 auto;
+    margin-top: 20%;
 }

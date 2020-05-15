@@ -41,20 +41,11 @@
         <h1>HANGMAN</h1>
         <h2 id="msg"></h2>
 
-
-        <div id="galley">
-            <div id="galley-picture"></div>
-            <div id="mrStickman"></div>
-        </div>
-
-        <form action="javascript:submitGuess()">
+        <form action="javascript:submitGuess()" id="form">
             <textarea maxlength="1" minlength="1" id="letter-guess"></textarea>
             <input type="submit" value="Guess!">
         </form>
 
-
-        
-        </div>
 
         <ul id="letters"></ul>
 
@@ -63,12 +54,8 @@
             <input type="button" value="Medium" id="med">
             <input type="button" value="Hard" id="lon">
             <input type="button" value="Phrases" id="phr">
-        </div>
-
-        <div id="cheat">
             <input type="button" id="cheat-button" value="Cheat">
         </div>
-
         
 
     </body>
