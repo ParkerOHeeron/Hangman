@@ -11,3 +11,11 @@
     bottom: 20px;
     width: 100%;
 }
+
+.btn.btn-lg.btn-primary.m-2 {
+    background-color: indigo;
+}
+
+.btn.btn-info {
+    background-color: rgb(12, 4, 47);
+}
