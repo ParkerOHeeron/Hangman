@@ -103,6 +103,7 @@ function reset() {
     guessed = [];
     myDiff = 0;
     document.getElementById('mrStick').src = './assets/0.jpg';
+    document.getElementById('cheatMsg').innerHTML = '';
 
     randomWord();
     guessedWord();
