@@ -1,5 +1,5 @@
 # Hangman
-# This game of hangman has no character spaces!
+
 
 
 # Do you think you can win?
@@ -21,4 +21,5 @@
 ##    dynamic character spaces
 ##    different choices of background
 ##    add phrases and cheats 
+##    Actual story arcs 
 
