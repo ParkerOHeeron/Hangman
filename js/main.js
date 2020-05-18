@@ -16,19 +16,31 @@ function randomWord(diff) {
     if(diff === 3){
         myDiff = 3;
         document.getElementById('cheatMsg').innerHTML = '';
+<<<<<<< HEAD
         answer = lonArr[Math.floor(Math.random() * lonArr.length)];
+=======
+        answer = lonArr[Math.floor(Math.random() * lonArr.length)].toLowerCase();
+>>>>>>> master
         guessedWord();
         generateBtns();
     }else if(diff === 2){
         myDiff = 2;
         document.getElementById('cheatMsg').innerHTML = '';
+<<<<<<< HEAD
         answer = medArr[Math.floor(Math.random() * medArr.length)];
+=======
+        answer = medArr[Math.floor(Math.random() * medArr.length)].toLowerCase();
+>>>>>>> master
         guessedWord();
         generateBtns();
     }else if(diff === 1){
         myDiff = 1;
         document.getElementById('cheatMsg').innerHTML = '';
+<<<<<<< HEAD
         answer = tinArr[Math.floor(Math.random() * tinArr.length)];
+=======
+        answer = tinArr[Math.floor(Math.random() * tinArr.length)].toLowerCase();
+>>>>>>> master
         guessedWord();
         generateBtns();
     }
@@ -72,6 +84,7 @@ function renderMrStick() {
 
 function gameStateWin() {
     if (wordStatus === answer) {
+        document.getElementById('mrStick').src = './assets/win.jpg';
         document.getElementById('alphaBtns').innerHTML = '!!!WINNER!!!';
     }
 }
