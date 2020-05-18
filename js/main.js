@@ -1,4 +1,4 @@
-const tinArr = ['Hi', 'My', 'Name', 'Is', 'Slim', 'Pluto', 'Daffy', 'Duck']
+const tinArr = ['Hi', 'My', 'Name', 'Is', 'Slim', 'Pluto', 'Daffy', 'Duck', '!', '*']
 const medArr = ['incredulous', 'phantom', 'medium', 'difficulty', 'BenIsCool', 'Complete', 'Mission', 'Hilarious'];
 const lonArr = ['HardModeHasNoRules', 'HAHAHAYouThoughtIWasJustOneWord', 'Supercalifragilisticexpialidocious'];
 
@@ -50,7 +50,7 @@ function randomWord(diff) {
 
 
 function generateBtns() {
-    let buttonsHTML = 'abcdefghijklmnopqrstuvwxyz'.split('').map(letter => 
+    let buttonsHTML = 'abcdefghijklmnopqrstuvwxyz!*'.split('').map(letter => 
         `
             <button
               class="btn btn-lg btn-primary m-2"
@@ -68,6 +68,7 @@ function handleGuess(letPick) {
     guessed.indexOf(letPick) === -1 ? guessed.push(letPick) : null;
     document.getElementById(letPick).setAttribute('disabled', true);
 
+
     if(answer.indexOf(letPick) >= 0) {
         guessedWord();
         gameStateWin();
@@ -83,9 +84,15 @@ function renderMrStick() {
 }
 
 function gameStateWin() {
-    if (wordStatus === answer) {
+    if (wordStatus === answer && answer != '!' && answer != '*') {
         document.getElementById('mrStick').src = './assets/win.jpg';
         document.getElementById('alphaBtns').innerHTML = '!!!WINNER!!!';
+    }else if(wordStatus === answer && answer === '!' && answer != '*'){
+        document.getElementById('mrStick').src = './assets/party.jpg';
+        document.getElementById('alphaBtns').innerHTML = 'Good Memories';
+    }else if(wordStatus === answer && answer != '!' && answer === '*'){
+        document.getElementById('mrStick').src = './assets/party.jpg';
+        document.getElementById('alphaBtns').innerHTML = 'Great Memories';
     }
 }
 
@@ -129,9 +136,6 @@ function cheat() {
 }
 
 
-
-
-//document.getElementById('maxLimbs').innerHTML = maxLimbs;
 randomWord();
 generateBtns();
 guessedWord();
