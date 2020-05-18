@@ -6,7 +6,7 @@
 
 
 ## 
-# ![Wireframe](assets/wireframe.jpg)
+# ![Wireframe](assets/HangmanWire.drawio.pdf)
 ## 
 ## 
 
