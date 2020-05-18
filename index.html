@@ -9,16 +9,22 @@
     <script defer src="js/main.js"></script>
 </head>
 <body>
-    <div class="container">
-        <h1 class="text-center">Hangman</h1>
-        <div class="float-right">Wrong Guesses: <span id='mistakes'>0</span> of <span id='maxLimbs'></span></div>
-        <div class="text-center">
-            <img id='mrStick' src="./assets/0.jpg" alt=''>
-            <p>Guess the word:</p>
-            <p id="currentWord">The current word guesses go here</p>
-            <div id="alphaBtns">
+    <div class="blackBackground">
+        <div class="container">
+            <h1 class="text-center">Hangman</h1>
+            <div class="text-center">
+                <p id="cheatMsg"></p>
+                <img id='mrStick' src="./assets/0.jpg" alt=''>
+                <p>Guess the word:</p>
+                <p id="currentWord">The current word guesses go here</p>
+                <div id="alphaBtns">
+                </div>
+                <button class="btn btn-info" onClick="randomWord(1)">Easy</button>
+                <button class="btn btn-info" onClick="randomWord(2)">Medium</button>
+                <button class="btn btn-info" onClick="randomWord(3)">Hard</button>
+                <button class="btn btn-info" onClick="reset()">Reset</button>
+                <button class="btn btn-info" onClick="cheat()">Cheat</button>
             </div>
-            <button class="btn btn-info" onClick="reset()">Reset</button>
         </div>
     </div>
 </body>
